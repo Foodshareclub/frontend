@@ -1,7 +1,7 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
-import styles from "./Login.module.scss";
+import styles from "./loginPage.module.scss";
 
 import { NavLink, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -15,7 +15,7 @@ export const LoginPage = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     // const { status } = useSelector(initUser.login);
-    const isRegistered = status === "success";
+    // const isRegistered = status === "success";
 
     const { register, handleSubmit, setError, formState: { errors, isValid } } = useForm({
         defaultValues: {
@@ -34,10 +34,10 @@ export const LoginPage = () => {
         //     alert("Не удалось авторизоваться...");
         // }
     };
-
-    if (isRegistered) {
-        navigate("/");
-    }
+    //
+    // if (isRegistered) {
+    //     navigate("/");
+    // }
 
     return (
         <>
