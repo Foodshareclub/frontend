@@ -4,6 +4,7 @@ import Main from "./components/main/Main";
 import Footer from "./components/footer/Footer";
 import {Routes, Route} from "react-router-dom";
 import {LoginPage} from "./pages/login/LoginPage";
+import {Registration} from "./pages/registration/Registration";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path={"/"} element={<Main/>}/>
           <Route path={"/login"} element={<LoginPage/>}/>
+          <Route path={"/registration"} element={<Registration/>}/>
         </Routes>
 
         <Footer/>
