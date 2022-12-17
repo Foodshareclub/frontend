@@ -28,10 +28,16 @@ export type RegistrationResponseType = {
     error: string;
 }
 
+export type AuthPayload = {
+    email: string
+    password: string
+    rememberMe?: boolean
+    captcha?: string
+}
 export const profileAPI = {
-    login(email: string, password: string, rememberMe: boolean) {
+    login(email: string, password: string) {
         return instance.post<ResponseType>('auth/login',
-            {email, password, rememberMe}
+            {email, password}
         );
     },
     logOut() {
