@@ -1,9 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {AuthPayload, profileAPI} from "../../api/profileAPI";
+import {AuthPayload, profileAPI, registrationAPI} from "../../api/profileAPI";
 
 
 const initialState = {
   login: {},
+  registration:{},
+  isRegister:false,
   isAuth:false
 
 };
@@ -19,10 +21,23 @@ export const loginTC = createAsyncThunk("/auth/loginTC", async ({email,password}
       return thunkAPI.rejectWithValue(e.response.data[0].msg);
     }
   }
-
 });
+  export const registerTC = createAsyncThunk("/auth/registerTC", async ({email,password}:AuthPayload, thunkAPI) => {
+  try {
+    const { data } = await registrationAPI.registration(email,password);
+
+    return data;
+  } catch (e:any) {
+    if (e.response.data.message) {
+      return thunkAPI.rejectWithValue(e.response.data.message);
+    } else {
+      return thunkAPI.rejectWithValue(e.response.data[0].msg);
+    }
+  }
+  });
+
 export const logoutTC = createAsyncThunk("/auth/logoutTC", async (arg, thunkAPI) => {
-  await thunkAPI.dispatch(logoutAC("loading"));
+  await thunkAPI.dispatch(logoutAC());
 });
 
 
@@ -30,7 +45,7 @@ const userSlice = createSlice({
   name: "user",
   initialState: initialState,
   reducers: {
-    logoutAC(state, action) {
+    logoutAC(state) {
       state.login={}
       state.isAuth = false;
     },

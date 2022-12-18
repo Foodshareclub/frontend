@@ -3,8 +3,8 @@ import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 import Footer from "./components/footer/Footer";
 import {Routes, Route} from "react-router-dom";
-import {LoginPage} from "./pages/login/LoginPage";
 import {Registration} from "./pages/registration/Registration";
+import {Login} from "./pages/Login/Login";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Header/>
         <Routes>
           <Route path={"/"} element={<Main/>}/>
-          <Route path={"/login"} element={<LoginPage/>}/>
+          <Route path={"/login"} element={<Login/>}/>
           <Route path={"/registration"} element={<Registration/>}/>
         </Routes>
 
