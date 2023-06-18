@@ -25,7 +25,7 @@ export const PersonalInfoPage = () => {
     const [firstName, setFirstName] = useState(value.first_name);
     const [secondName, setSecondName] = useState(value.second_name);
     const [email, setEmail] = useState(user?.email as string);
-    const [phone, setPhone] = useState(value.phone_number);
+    const [phone, setPhone] = useState(value.phone);
 
     useEffect(() => {
         if (id) {
@@ -117,7 +117,7 @@ export const PersonalInfoPage = () => {
                         <Box mt={5}>
                             <PhoneNumberBlock
                                 a={a} b={b} c={c} d={d}
-                                phone={phone || value.phone_number}
+                                phone={phone || value.phone}
                                 setPhone={setPhone}
                                 onSaveHandler={onSaveHandler}
                                 setA={setA} setB={setB} setD={setD}

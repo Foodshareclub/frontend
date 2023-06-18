@@ -1,13 +1,7 @@
 import {supabase} from "@/supaBase.config";
-import {
-    AuthError,
-    AuthResponse,
-    AuthSession,
-    OAuthResponse,
-    PostgrestSingleResponse,
-    User,
-} from "@supabase/supabase-js";
+import {AuthError, AuthResponse, AuthSession, PostgrestSingleResponse, User,} from "@supabase/supabase-js";
 import {MobileOtpType} from "@supabase/gotrue-js/dist/module/lib/types";
+
 export type CountryType={
     continent:any
     id: number
@@ -36,13 +30,14 @@ export type AllValuesType = {
     avatar_url: string
     birth_date: string
     first_name: string,
-    phone_number: string
+    phone: string
     second_name: string,
     updated_at: Date,
     user_address: string,
     user_location: string
     user_metro_station: string
     username: string
+    role: RoleType
 }
 export type ImgUrlType = {
     dir: string, imgUrl: string
@@ -58,6 +53,16 @@ export type GetValueType = {
     columnValueItem: string
     selectRow: Array<string> | string
 }
+
+export type RoleType = {
+    admin: false
+    volunteer: false
+    subscriber: true
+    organization: false
+    'fridge-coordinator': false
+    'foodbank-coordinator': false
+}
+
 export type DataType = {
     user: User
     session: null | AuthSession

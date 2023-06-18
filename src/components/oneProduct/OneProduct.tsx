@@ -45,7 +45,7 @@ export const OneProduct: React.FC<OneProductType> = ({
             navigateHandler();
         }
         if (buttonValue === "approval pending") {
-            await actions.updateProductTC({gif_url: product.gif_url, id: product.id, post_published: false});
+            await actions.updateProductTC({gif_url: product.gif_url, id: product.id, active: false});
             await actions.updateRoomTC({post_arranged_to: requesterId, id: roomId as string});
         }
         if (buttonValue === "leave a feedBack") {
@@ -124,7 +124,7 @@ export const OneProduct: React.FC<OneProductType> = ({
                     <Flex justify={"space-between"}>
                         <Image mt={1} width={4} src={bus} alt={'bus'}/>
                         <Text color={'gray.500'} fontSize={'sm'}
-                              textTransform={'uppercase'}>{product.post_metro_station}</Text>
+                              textTransform={'uppercase'}>{product.transportation}</Text>
                     </Flex>
                 </Box>
                 {chat && <TopTips/>}
@@ -134,7 +134,7 @@ export const OneProduct: React.FC<OneProductType> = ({
                     {!isAuth ? <AuthenticationUserModal oneProductComponent buttonValue="Login" thunk={loginTC}/> :
                         buttonValue === "leave a feedBack" ?
                             <Button
-                                isDisabled={product.post_published}
+                                isDisabled={product.active}
                                 onClick={onClick}
                                 textTransform={"uppercase"}
                                 colorScheme='red'

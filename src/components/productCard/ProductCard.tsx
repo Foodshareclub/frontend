@@ -25,7 +25,7 @@ export const ProductCard: React.FC<ProductCardType> = React.memo(({product}) => 
         <GridItem>
             <Box position={"relative"}>
                 {
-                    userId === product.user &&
+                    userId === product.profile_id &&
                     <Flex w={'100%'} top={2} right={2} alignItems={"end"} position={"absolute"} justify={"end"}>
                         <IconButton
                             backgroundColor={"snow"}
@@ -91,7 +91,7 @@ export const ProductCard: React.FC<ProductCardType> = React.memo(({product}) => 
                 <Flex gap={'5px'}>
                     <Image mt={1} width={5} src={bus} alt={'bus'}/>
                     <Text alignSelf={"center"} color={'black'} fontSize={'sm'}
-                    >{product.post_metro_station}</Text>
+                    >{product.transportation}</Text>
                 </Flex>
             </Box>
         </GridItem>

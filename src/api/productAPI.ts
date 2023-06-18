@@ -23,13 +23,12 @@ export type InitialProductStateType = {
     post_arranged: boolean
     post_description: string
     post_like_counter: number
-    post_metro_station: string
+    transportation: string
     post_name: string
     post_type: string
-    post_published: boolean
+    active: boolean
     post_views: number
     profile_id: string
-    user: string
     reviews: Array<ReviewsType>
 }
 
@@ -50,7 +49,7 @@ export const productAPI = {
             .select(`*,reviews(*)`)
             .order('created_at', {ascending: false})
             .eq('post_type', productType.toLowerCase())
-            .eq('post_published',true)
+            .eq('active',true)
     },
     getProductsLocation(productType: string): PromiseLike<PostgrestSingleResponse<Array<LocationType>>> {
         return supabase

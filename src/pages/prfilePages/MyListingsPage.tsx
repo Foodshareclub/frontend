@@ -25,7 +25,7 @@ const MyListingsPage = () => {
     const isUpdateProduct = useAppSelector(isUpdateProductSelector);
     const updateProductEffect = useAppSelector(updateProductEffectSelector);
     const currentUserProducts = useAppSelector(currentUserProductsSelector);
-    const publishedProducts = currentUserProducts.filter(product => product.post_published);
+    const publishedProducts = currentUserProducts.filter(product => product.active);
     const isAuth = useAppSelector(isAuthSelector);
     const productMessage = useAppSelector(messageProductSelector);
     const status = useAppSelector(productStatusSelector);

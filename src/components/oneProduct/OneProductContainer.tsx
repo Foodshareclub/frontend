@@ -37,7 +37,7 @@ export const OneProductContainer: React.FC<OneProductContainerType> = ({
     const createRoom = async () => {
         const room = {
             requester: userID,
-            sharer: product.user,
+            sharer: product.profile_id,
             post_id: product.id,
             last_message_sent_by: userID,
             last_message_seen_by: userID,
@@ -47,7 +47,7 @@ export const OneProductContainer: React.FC<OneProductContainerType> = ({
     }
 
     const navigateHandler = async () => {
-        if (product.user === userID) {
+        if (product.profile_id === userID) {
             navigate(PATH.myListingsPage);
             return;
         }
@@ -55,7 +55,7 @@ export const OneProductContainer: React.FC<OneProductContainerType> = ({
         await createRoom()
         }
         if (isRoomExist) {
-            navigate(`/chat-main/?p=${product.id}&s=${product.user}&r=${userID}&room=${createdRoom[0]?.id}`);
+            navigate(`/chat-main/?p=${product.id}&s=${product.profile_id}&r=${userID}&room=${createdRoom[0]?.id}`);
         }
     }
 
@@ -63,7 +63,7 @@ export const OneProductContainer: React.FC<OneProductContainerType> = ({
         <OneProduct
             navigateHandler={navigateHandler}
             product={product}
-            buttonValue={product.user === userID? 'go to my listings':isRoomExist ? "go to chat" : "request"}
+            buttonValue={product.profile_id === userID? 'go to my listings':isRoomExist ? "go to chat" : "request"}
             key={id}
         />
     )
