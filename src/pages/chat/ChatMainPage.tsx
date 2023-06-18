@@ -115,7 +115,7 @@ const ChatMainPage = () => {
                 chat="chat"
                 product={oneProduct}
                 buttonValue={
-                    (oneProduct.post_published && (sharerId === userID)) ?
+                    (oneProduct.active && (sharerId === userID)) ?
                         "approval pending" :
                         (oneProductWithoutReview || (feedBackStatus === "written")) ?
                             "completed" : "leave a feedBack"

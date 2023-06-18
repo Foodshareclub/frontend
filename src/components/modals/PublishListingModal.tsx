@@ -61,7 +61,7 @@ const PublishListingModal: React.FC<PublishListingModalType> = React.memo(({
     const [description, setDescription] = useState(product?.post_description || '');
     const [time, setTime] = useState(product?.pickup_time || '');
     const [address, setAddress] = useState(product?.post_address || '');
-    const [metroStation, setMetroStation] = useState(product?.post_metro_station || '');
+    const [metroStation, setMetroStation] = useState(product?.transportation || '');
     const [productId, setProductId] = useState(product?.id || 0);
     const [filePath, setFilePath] = useState('')
     const [file, setFile] = useState<File>({} as File)
@@ -98,7 +98,7 @@ const PublishListingModal: React.FC<PublishListingModalType> = React.memo(({
         });//если дубль фото то в сторадже не создаст новую
 
         if (product) {
-            await actions.updateProductTC({...productObj, id: productId, post_published: true});
+            await actions.updateProductTC({...productObj, id: productId, active: true});
         } else await actions.createProductTC(productObj);
         if (onClose) {
             onClose();
