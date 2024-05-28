@@ -25,6 +25,8 @@ export const getProductsTC = createAsyncThunk("/getProductsTC", async (productTy
             console.log(error);
             return thunkAPI.rejectWithValue(error);
         }
+        console.log(data);
+        
         return data;
     } catch (e) {
         return thunkAPI.rejectWithValue(e);
@@ -72,6 +74,8 @@ export const getOneProductTC = createAsyncThunk('/getOneProductTC', async (produ
 });
 
 export const createProductTC = createAsyncThunk('/createProductTC', async (productObj: Partial<InitialProductStateType>, thunkAPI) => {
+    console.log(productObj);
+    
     try {
         const {error} = await productAPI.createProduct(productObj)
         if (error) {

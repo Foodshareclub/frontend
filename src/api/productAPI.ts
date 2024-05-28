@@ -44,12 +44,13 @@ export const productAPI = {
             .select('*')
     },
     getProducts(productType: string): PromiseLike<PostgrestSingleResponse<Array<InitialProductStateType>>> {
-        return supabase
+      return  supabase
             .from('posts')
             .select(`*,reviews(*)`)
             .order('created_at', {ascending: false})
             .eq('post_type', productType.toLowerCase())
             .eq('active',true)
+
     },
     getProductsLocation(productType: string): PromiseLike<PostgrestSingleResponse<Array<LocationType>>> {
         return supabase
@@ -61,7 +62,8 @@ export const productAPI = {
         return supabase
             .from('posts')
             .select('*')
-            .eq('user', currentUserID)
+            .eq('profile_id', currentUserID)
+            // .eq('user', currentUserID)
     },
     getOneProduct(productId: number): any {
         return supabase

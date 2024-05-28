@@ -75,17 +75,28 @@ const PublishListingModal: React.FC<PublishListingModalType> = React.memo(({
     }
     const postImgUrl = `https://iazmjdjwnkilycbjwpzp.supabase.co/storage/v1/object/public/avatars-posts/${id}/${filePath}`
 
-    let productObj = {
+    let productObj: Partial<InitialProductStateType> = {
         gif_url: postImgUrl,
         post_type: category,
         post_name: title,
         post_description: description,
         pickup_time: time,
         post_address: address,
-        post_metro_station: metroStation,
-        user: id,
+        transportation: metroStation,
+        profile_id: id,
         locations: userLocation
     }
+    // let productObj = {
+    //     gif_url: postImgUrl,
+    //     post_type: category,
+    //     post_name: title,
+    //     post_description: description,
+    //     pickup_time: time,
+    //     post_address: address,
+    //     post_metro_station: metroStation,
+    //     user: id,
+    //     locations: userLocation
+    // }
 
     if (product && !filePath) {
         productObj = {...productObj, gif_url: product.gif_url}

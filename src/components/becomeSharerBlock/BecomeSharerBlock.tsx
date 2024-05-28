@@ -47,7 +47,7 @@ export const BecomeSharerBlock = () => {
                 bg={"none"}
                 alignSelf={"center"}
                 as={Button}>
-                Become a Sharer
+                Add listing
             </MenuButton>
 
             <MenuList
