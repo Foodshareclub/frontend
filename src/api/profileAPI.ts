@@ -83,6 +83,7 @@ export type AuthPayload = {
     captcha?: string
 }
 export type ProviderType = "google" | "apple" | "github" | "facebook"
+
 export const profileAPI = {
     registration({email, password, firstName, lastName}: AuthPayload): Promise<AuthResponse> {
         return supabase.auth.signUp({
@@ -141,7 +142,7 @@ export const profileAPI = {
         return supabase.from('address').select("*").eq("profile_id",userId)
     },
     getAllCountries() {
-        return supabase.from('countries').select("*")
+        return supabase.from('countries').select("*").range(100, 250)
     },
     getVolunteer(): PromiseLike<PostgrestSingleResponse<Array<AllValuesType>>> {
         return supabase

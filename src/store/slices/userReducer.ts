@@ -12,6 +12,7 @@ import {
 import {Session, User} from "@supabase/supabase-js";
 import {supabase} from "@/supaBase.config";
 import {StatusType} from "@/components/alert/AlertComponent";
+import { getAllCountries } from '@/hook';
 
 const initialState = {
     login: {} as User,
@@ -207,14 +208,23 @@ export const getAddressProfileTC = createAsyncThunk("/auth/getAddressProfileTC",
 })
 export const getAllCountriesTC = createAsyncThunk("/auth/getAllCountriesTC", async (_, thunkAPI) => {
     try {
-        const {data, error} = await profileAPI.getAllCountries();
-        if (error) {
-            console.log(error)
-            return thunkAPI.rejectWithValue(error);
+        // const {data, error} = await profileAPI.getAllCountries();
+        const res = await getAllCountries();
+        // if (error) {
+        //     console.log(error)
+        //     return thunkAPI.rejectWithValue(error);
+        // }
+        // if (data) {
+        //     //console.log(data)
+        //     return data
+        // }
+        if (!res) {
+            console.log(res)
+            return thunkAPI.rejectWithValue(res);
         }
-        if (data) {
+        if (res) {
             //console.log(data)
-            return data
+            return res
         }
     } catch (e: any) {
         thunkAPI.rejectWithValue(e.message)

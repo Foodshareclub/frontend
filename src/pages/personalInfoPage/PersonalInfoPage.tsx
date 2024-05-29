@@ -71,7 +71,7 @@ export const PersonalInfoPage = () => {
             {
                 (address === undefined) || !Object.keys(address).length
                     ?
-                    <>
+                    (<>
                         <Box mt={'8vh'}>
                             <Text fontSize='4xl' fontWeight={"bold"}>
                                 Personal info
@@ -87,9 +87,9 @@ export const PersonalInfoPage = () => {
                         <Box mt={5}>
                             <Skeleton height='50px' isLoaded={false}/>
                         </Box>
-                    </>
+                    </>)
                     :
-                    <>
+                    (<>
                         <Box mt={'8vh'}>
                             <Text fontSize='4xl' fontWeight={"bold"}>
                                 Personal info
@@ -130,7 +130,7 @@ export const PersonalInfoPage = () => {
                                 setA={setA} setB={setB} setC={setC}
                             />
                         </Box>
-                    </>
+                    </>) 
 
             }
 

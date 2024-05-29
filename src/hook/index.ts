@@ -6,6 +6,7 @@ import {useGridSize} from "@/hook/useGridSize";
 import useMediaQuery from "@/hook/useMediaQuery";
 import {useEvent, useWindowEvent} from "@/hook/useEvent";
 import { useLatest } from "./useLatest";
+import { getAllCountries } from './getAllCountries';
 
 export {
     useLatest,
@@ -16,5 +17,6 @@ export {
     useDebounce,
     useGridSize,
     useMediaQuery,
-    useEvent
+    useEvent,
+    getAllCountries
 }

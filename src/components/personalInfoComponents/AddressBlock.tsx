@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Box, Button, Flex, FormControl, FormLabel, Heading, Input, Select, Text} from "@chakra-ui/react";
 import {profileAPI} from "@/api";
-import {useAppSelector} from "@/hook";
+import {getAllCountries, useAppSelector} from "@/hook";
 import {Trans} from "@lingui/macro";
 import {allCountriesSelector, userCountrySelector} from "@/store/slices/userSelectors";
-import {AddressType} from "@/api/profileAPI";
+import {AddressType, CountryType} from "@/api/profileAPI";
 
 type AddressBlockType = {
     address: AddressType
@@ -20,6 +20,7 @@ type AddressBlockType = {
 export const AddressBlock: React.FC<AddressBlockType> = ({a, b, c, d, address, setC, setA, setB}) => {
     const allCountries = useAppSelector(allCountriesSelector);
     const userCountry = useAppSelector((state) => userCountrySelector(state, address.country));
+
 
     const [edit, setEdit] = useState(false);
     const [lineOne, setLineOne] = useState(address.address_line_1);

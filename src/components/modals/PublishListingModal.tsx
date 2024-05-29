@@ -75,6 +75,7 @@ const PublishListingModal: React.FC<PublishListingModalType> = React.memo(({
     }
     const postImgUrl = `https://iazmjdjwnkilycbjwpzp.supabase.co/storage/v1/object/public/avatars-posts/${id}/${filePath}`
 
+
     let productObj: Partial<InitialProductStateType> = {
         gif_url: postImgUrl,
         post_type: category,
